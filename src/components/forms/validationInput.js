@@ -11,10 +11,6 @@ function containsOnlyDigits(str) {
 }
 
 function validateField(input, validator){
-    console.log(validator);
-    
-    console.log(validator);
-    
     const errors = [];
     if (validator === undefined) return errors;
     if (validator.required && (input === undefined || input === null || input === "")) {

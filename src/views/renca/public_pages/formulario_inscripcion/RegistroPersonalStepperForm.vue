@@ -640,8 +640,7 @@
 
             watch(form, (newForm) => {
                 
-                formErrors.value = evaluateFields(newForm);console.log(formErrors);
-                
+       formErrors.value = evaluateFields(newForm);
                 //debounce(evaluateFields, 50);
             },
                 {deep: true}
