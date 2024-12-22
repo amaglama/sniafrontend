@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.env
+
+# Directorios de IDEs y editores
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Archivos de configuración de bundlers
+*.cache
+*.temp
+
+# Caché de compilación de Vue.js
+.vuepress/dist/
+.vuepress/.temp/
+
+# Directorios específicos de herramientas
+/.quasar/
+public/hot
+storage/*.key

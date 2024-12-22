@@ -1,0 +1,8 @@
+LISTADO DEL MENU
+ IR A stores/constants/constans.js
+    ir a router/index.js ESTE REDIRECCIONA A LA CARPETA view prueba
+      COMPONENT FormCom es la vista donde se envia al servidor y verifica las validaciones, https.js estan las funciones para enviar al servidor
+   
+   regFormulario de la vista prueba o carpeta es donde se configuran los datos como ser los campos y la api url es asignada ahi.
+   urlsBAckEnd.js estan las rutas para enviar al servidor.
+   
