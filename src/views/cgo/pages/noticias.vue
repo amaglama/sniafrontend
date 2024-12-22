@@ -4,7 +4,6 @@
         <span class="font-bold">{{ titulo }}</span>
       </div>
         <!-- <TitleForm>SNIA</TitleForm> -->
-         <Item></Item>
         <div>
             <TabsContainer :tabs="tabsConfig" :initialTab="'tab1'">
           <template #default="{ activeTab }">
@@ -23,7 +22,6 @@ import TabsContainer from '@/views/cgo/components/TabsContainer.vue';
 import FirstTab from '@/views/cgo/components/NoticesTab.vue';
 import SecondTab from '@/views/cgo/components/BoletinesTab.vue';
 import ThirdTab from '@/views/cgo/components/ManualesTab.vue';
-import Item from "@/views/cgo/components/NotaItem.vue";
 import { ref } from 'vue';
 
 const titulo = "COMISION GUBERNAMENTAL DEL OZONO-BOLIVIA";

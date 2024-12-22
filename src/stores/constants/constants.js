@@ -30,6 +30,9 @@ export const LISTS = {
         "Lista anuncio": "/anuncios",
         "Crear anuncio": "/anuncio-registro",
     },
+    "cgo": {
+        "Rentraa": "/cgo/noticias",
+    }
 
 
 };
@@ -64,5 +67,6 @@ export const LISTS_PUBLIC = {
     "usuarios": {
     },
     "anuncios":{
-    }
+    },
+    "cgo":{}
 }

@@ -11,6 +11,16 @@ export async function getAnuncios() {
   }
 }
 
+export async function getAnunciosByType( type) {
+  try {
+    const response = await http.get(APIS.ANUNCIOS.GET, false, {});
+    return response.filter(e => e.type.toUpperCase() == type.toUpperCase());
+  } catch (error) {
+    console.error("Error fetching anuncios:", error);
+    return [];
+  }
+}
+
 export async function getAnuncio(id) {
   if (id === undefined || id === null){
     return {};

@@ -5,7 +5,7 @@
     <div class="h-full">
         <div>
                 <FormComp
-                    :title="`FORMULARI1O ${ typeForm === 'post'? 'INSCRIPCIÓN' : (typeForm === 'update'? 'ACTUALIZACIÓN': 'RENOVACIÓN')} CONSULTOR UNIPERSONAL RENCA`"
+                    :title="`FORMULARIO ${ typeForm === 'post'? 'INSCRIPCIÓN' : (typeForm === 'update'? 'ACTUALIZACIÓN': 'RENOVACIÓN')} CONSULTOR UNIPERSONAL RENCA`"
                     :disabled-submit="false"
                     :post-url="postConst"
                     :form-errors="formErrors"
@@ -640,13 +640,15 @@
 
             watch(form, (newForm) => {
                 
-                formErrors.value = evaluateFields(newForm);
+                formErrors.value = evaluateFields(newForm);console.log(formErrors);
+                
                 //debounce(evaluateFields, 50);
             },
                 {deep: true}
             );
 
             const evaluateFields = (form) => {
+            
                     //If email already exist
                     const errors = {};
 
@@ -671,9 +673,11 @@
             };
 
             const validateStep = async (step) => {
+            
                 const errors = [];
                 const names = getInputsNames()[step];
                 for (let name of names){
+                
                     if (form[name] === undefined) continue;
                     const inputErrors = validationInput(form[name], formTypes[name]);
                     if (inputErrors.length === 0) continue;
