@@ -245,7 +245,7 @@ console.log(props.form);
     }
     
     waitAndExecute(()=> {
-      loadingData.value = "";return;
+      loadingData.value = "";
       if (errorData.value === ""){
         successData.value = "Datos ingresados exitosamente.";
         waitAndExecute(async ()=> {

@@ -4,9 +4,9 @@
         <div class="flex justify-stretch border-b-2 gap-4">
             <div class="detalles">
                 <p class="text-justify m-4">{{ descripcion }}</p>
-                <span>Adjunto: <a href="http://ddk.co" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Resolución Ministerial Nº {{ Math.floor(Math.random()*1000)  }}/2023</a></span>
+                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Resolución Ministerial Nº {{ Math.floor(Math.random()*1000)  }}/2023</span></span>
 
-                <div class="mt-10 text-green-900"> Fecha de Publicación <span class="fond-bold">{{ fecha }}</span></div>
+                <div class="mt-10 text-green-900"> <span class="fond-bold">Fecha de Publicación </span> <span class="fond-bold text-sm">{{ fecha }}</span></div>
             </div>
             <!-- <div class="document grow">
                 <PdfPreview :url="urlPdf" :width="300"></PdfPreview>
