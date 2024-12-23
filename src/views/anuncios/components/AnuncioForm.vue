@@ -16,7 +16,7 @@
                                             :form-types="formTypes['id_module']" :on-set="onChangeModulo"
                                             class-name="w-52" />
                                     </div>
-                                </div><div>A{{ formErrors['id_type'] }}</div>
+                                </div>
                                 <div class="w-1/3">
                                     <div class="flex">
                                         <SelectForm name="id_type" v-model="selectedTipo"
