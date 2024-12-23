@@ -207,7 +207,7 @@ function put(form)
     else{
       const datas = props.onSendDataForm(form);
       const files = props.onSendFiles(form);
-      httpData.put(putUrl.value, datas, files, false, {}, errorData, props.dataFormFunc, true);
+      httpData.put(`${putUrl.value}${form.id}`, datas, files, false, {}, errorData, props.dataFormFunc, true);
     }
   }
   catch (e){
