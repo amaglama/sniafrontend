@@ -24,8 +24,8 @@
     </CardBox>
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
-        <PdfPreview :url="urlPdf" :width="500"></PdfPreview>
-        <button @click="closeModal">Cerrar</button>
+        <PdfPreview :url="urlPdf" :width="550"></PdfPreview>
+        <button @click="closeModal" class="text-xs">Cerrar</button>
       </div>
     </div>
 </template>

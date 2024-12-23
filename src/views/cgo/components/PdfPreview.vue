@@ -20,7 +20,7 @@ const { pdf, pages } = usePDF(props.url)
 
 <template>
   <div class="">
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center text-xs">
       <button @click="page = page > 1 ? page - 1 : page">
         Anterior
       </button>
