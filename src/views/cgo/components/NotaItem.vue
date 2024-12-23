@@ -13,26 +13,28 @@
             </div> -->
         </div>
         <div>
-            <div class="flex h-12 justify-end">
-            <ButtonComp 
+            <div class="flex h-12 justify-end pt-2">
+            <!-- <ButtonComp 
                 label="Ver Contenido Completo" 
                 :on-click="openModal" 
                 class-name="bg-terciary hover:bg-secondary text-black font-bold rounded-md"
-                ></ButtonComp>
+                ></ButtonComp> -->
+            <BaseButton label="Ver Contenido Completo" type="button" outline="true" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary hover:shadow-2xl"></BaseButton>
         </div>
         </div>
     </CardBox>
-    <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+    <!-- <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <PdfPreview :url="urlPdf" :width="550"></PdfPreview>
         <button @click="closeModal" class="text-xs">Cerrar</button>
       </div>
-    </div>
+    </div> -->
 </template>
 <script setup>
 import CardBox from "@/components/ComponentsOne/CardBox.vue";
 import Titles from "@/components/Titles/TitleForm.vue";
 import ButtonComp from "@/components/essencials/ButtonComp.vue";
+import BaseButton from "@/components/ComponentsOne/BaseButton.vue";
 import CardBoxModal from "@/components/ComponentsOne/CardBoxModal.vue";
 import PdfPreview from "@/views/cgo/components/PdfPreview.vue";
 import { computed, ref } from "vue";
