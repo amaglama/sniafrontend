@@ -6,7 +6,7 @@ import { VuePDF, usePDF } from '@tato30/vue-pdf'
 const props = defineProps({
     url: {
         type: String,
-        default: 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf'
+        default: ''
     },
     width: {
         type: Number,

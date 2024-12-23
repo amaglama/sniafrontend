@@ -56,7 +56,7 @@ defineProps({
     },
     urlPdf: {
         type: String,
-        default: 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf'
+        default: ''
     },
 });
 // Controla la visibilidad del modal

@@ -179,13 +179,16 @@ function post(form)
 {
 
   try{
-    console.log(form)
+
     if (!props.isDataForm){
+      console.log(datas,files);
       http.post(postUrl.value, props.onSend(form), false,  {}, errorData);
     }
     else{
       const datas = props.onSendDataForm(form);
       const files = props.onSendFiles(form);
+      console.log(datas,files);
+      
       httpData.post(postUrl.value, datas, files, false, {}, errorData, props.dataFormFunc, true);
     }
   }
@@ -221,7 +224,9 @@ function deleteItem(id)
 const validateAndSubmit = () => {
     const errors = validateForm(); 
     
-    /*if (Object.keys(errors).length > 0){
+    if (Object.keys(errors).length > 0){
+      console.log("Ingreso....", errors);
+      
         return;
     }
     if (!isEdit.value && postUrl === ""){
@@ -229,7 +234,7 @@ const validateAndSubmit = () => {
     }
     if (isEdit.value && putUrl === ""){
       return;
-    }*/
+    }
     loadingData.value = "Guardando datos.";
 console.log(props.form);
 
@@ -240,7 +245,7 @@ console.log(props.form);
     }
     
     waitAndExecute(()=> {
-      loadingData.value = "";
+      loadingData.value = "";return;
       if (errorData.value === ""){
         successData.value = "Datos ingresados exitosamente.";
         waitAndExecute(async ()=> {

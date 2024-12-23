@@ -1,6 +1,6 @@
 <template>
-    <FormComp :title="title" :post-url="postUrl" :put-url="putUrl" :on-send="onSend" :form-errors="formErrors"
-        :is-data-form="false" :form="form" :form-types="formTypes" :wait-time="3000" :prev-success="prevSuccess"
+    <FormComp :title="title" :post-url="postUrl" :put-url="putUrl" :on-send="onSend" :on-send-data-form ="onSend" :on-send-files="onSendFiles" :form-errors="formErrors"
+        :is-data-form="true" :form="form" :form-types="formTypes" :wait-time="3000" :prev-success="prevSuccess"
         :is-edit="isUpdate">
         <FormField label="FORMULARIO DE REGISTRO DE COMUNICADOS:">
             <div class="gap-y-4">
@@ -16,7 +16,7 @@
                                             :form-types="formTypes['id_module']" :on-set="onChangeModulo"
                                             class-name="w-52" />
                                     </div>
-                                </div>
+                                </div><div>A{{ formErrors['id_type'] }}</div>
                                 <div class="w-1/3">
                                     <div class="flex">
                                         <SelectForm name="id_type" v-model="selectedTipo"
@@ -42,7 +42,7 @@
                             </div>
                             <div class="flex">
                                 <div>
-                                    <FileForm name="documentPdf" label="Documento de Identidad.pdf"
+                                    <FileForm name="documentPdf" label="Documento de Relacionado.pdf"
                                         :files-allowed="filesAllowed" v-model="form.documentPdf"
                                         :errors="formErrors['documentPdf']"
                                         :form-types="formTypes['documentPdf']"
@@ -67,7 +67,6 @@ import InputForm from '@/components/forms/input/InputForm.vue';
 import SelectForm from '@/components/forms/select/SelectForm.vue';
 import FormComp from '@/components/forms/FormComp.vue';
 import FileForm from "@/components/forms/file/FileForm.vue";
-import PDFViewer from "@/components/pdf-visualizer/PdfViewer.vue";
 import { validationInputField } from '@/components/forms/validationInput';
 import { ref, reactive, onMounted, watch } from 'vue';
 import { MAX_FILE_SIZE, filesAllowed } from '@/stores/constants/constantsRENCA';
@@ -185,6 +184,11 @@ export default {
 
             }
         }
+        function onSendFiles(form){
+            return {
+                "documentPdf": form.documentPdf,
+            }
+        }
 
 
         return {
@@ -199,6 +203,7 @@ export default {
             postUrl: APIS.ANUNCIOS.POST,
             putUrl: APIS.ANUNCIOS.PUT,
             onSend,
+            onSendFiles,
             prevSuccess: props.prevSuccess,
             selectedModulo,
             selectedTipo,
