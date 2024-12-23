@@ -1,8 +1,9 @@
 export const PAGES_PATH = {
-    "renca" : "/RENCA",
-    "usuarios" : "/usuarios",
-    "renca-usuario": "/renca-usuario",
-    "anuncios" : "/anuncios"
+    "renca"         : "/RENCA",
+    "usuarios"      : "/usuarios",
+    "renca-usuario" : "/renca-usuario",
+    "anuncios"      : "/anuncios",
+    "cgo"           : "/cgo",
 };
 
 export const MAX_SHORT_LENGTH_INPUT = 16;

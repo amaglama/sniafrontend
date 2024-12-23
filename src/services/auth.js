@@ -33,7 +33,7 @@ export const login = async (params) => {
       "delegar",
       "renca-jefe",
       "anuncios",
-      "anuncio-registro",
+      "cgo",
     ];
  
     

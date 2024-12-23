@@ -280,7 +280,7 @@ const routes = [
       requiresAuth: false
     },
     path: '/anuncio/:item',
-    name:'anuncio',
+    name:'anuncio-edit',
     component: () => import("@/views/anuncios/private_pages/AnuncioMainForm.vue"),
   },
   {

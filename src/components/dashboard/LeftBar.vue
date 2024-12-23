@@ -158,6 +158,10 @@ import RencaBar from '@/views/renca/components/RencaBar.vue';
         key = "anuncios";
       }
 
+      if (directoryPath === PAGES_PATH["cgo"] || directoryPathsRENCAPublic.find(a => a === directoryPath) !== undefined){
+        key = "cgo";
+      }
+      
       //For private menus
       const menuOptions = ref(
         key === "" || !isAllowed(key)? [] :
@@ -219,14 +223,6 @@ import RencaBar from '@/views/renca/components/RencaBar.vue';
     }
     };
 </script>
-
-
-<style>
-  
-  .leftbar {
-    @apply transition-transform duration-300;
-  }
-</style>
 
 <!--
 
