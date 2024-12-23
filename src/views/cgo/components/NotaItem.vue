@@ -94,6 +94,8 @@ const openModal = () => {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: auto;
+  max-height: 100vh;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 </style>
