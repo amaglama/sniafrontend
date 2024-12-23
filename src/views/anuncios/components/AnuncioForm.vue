@@ -69,7 +69,7 @@ import FormComp from '@/components/forms/FormComp.vue';
 import FileForm from "@/components/forms/file/FileForm.vue";
 import { validationInputField } from '@/components/forms/validationInput';
 import { ref, reactive, onMounted, watch } from 'vue';
-import { MAX_FILE_SIZE, filesAllowed } from '@/stores/constants/constantsRENCA';
+import { MAX_FILE_SIZE } from '@/stores/constants/constantsRENCA';
 import { MAX_LONG_LENGTH_INPUT, MAX_SHORT_LENGTH_INPUT, MAX_LENGTH_INPUT } from '@/stores/constants/pages';
 import { APIS } from '@/stores/constants/urlsBackEnd';
 import { getAnuncio } from '@/services/anuncios';
@@ -103,7 +103,7 @@ export default {
     },
     setup(props) {
         const route = useRoute();
-
+        const filesAllowed = [".pdf"];
         const id = route.params.item ? Number(route.params.item) : null;
         const isUpdate = ref(props.isUpdate);
         if (id !== null) {
