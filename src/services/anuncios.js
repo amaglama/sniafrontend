@@ -1,5 +1,6 @@
 import { http } from '@/services/https';
 import { APIS } from '@/stores/constants/urlsBackEnd';
+import { formatFecha } from "@/stores/utils/dateFormats";
 
 const urlsFake = [
   'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf',
@@ -23,7 +24,8 @@ export async function getAnunciosByType( type) {
     const response = await http.get(APIS.ANUNCIOS.GET, false, {});
     const resType = response.filter(e => e.type.toUpperCase() == type.toUpperCase());
     resType.forEach(anun => {
-      anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : urlsFake[Math.floor(Math.random() * 3)];
+      anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : '';
+      //anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : urlsFake[Math.floor(Math.random() * 3)];
       anun["fecha"] = formatFecha(anun["created_at"]);
     });
     return resType;
@@ -45,10 +47,4 @@ export async function getAnuncio(id) {
     console.error("Error fetching anuncio:", error);
     return {};
   }
-}
-
-
-function formatFecha(fecha){
-  let date = new Date(fecha);  
-  return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
 }
