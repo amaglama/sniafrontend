@@ -120,7 +120,7 @@ export default {
             id_module: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
             id_type: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
             title: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
-            description: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
+            description: validationInputField("text", true, MAX_DESCRIPTION_INPUT),
         });
         const formErrors = ref({});
         const selectedModulo = ref({});
