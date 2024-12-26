@@ -4,7 +4,7 @@
         <div class="flex justify-stretch border-b-2 gap-4">
             <div class="detalles">
                 <p class="text-justify m-4">{{ descripcion }}</p>
-                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Resolución Ministerial Nº {{ Math.floor(Math.random()*1000)  }}/2023</span></span>
+                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> {{ pdfName }}</span></span>
 
                 <div class="mt-10 text-green-900"> <span class="fond-bold">Fecha de Publicación </span> <span class="fond-bold text-sm">{{ fecha }}</span></div>
             </div>
@@ -19,7 +19,7 @@
                 :on-click="openModal" 
                 class-name="bg-terciary hover:bg-secondary text-black font-bold rounded-md"
                 ></ButtonComp> -->
-            <BaseButton label="Ver Contenido Completo" type="button" outline="true" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary hover:shadow-2xl"></BaseButton>
+            <BaseButton label="Ver Contenido Completo" type="button" active="true" outline="false" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary"></BaseButton>
         </div>
         </div>
     </CardBox>
@@ -50,7 +50,7 @@ defineProps({
     },
     fecha: {
         type: String,
-        default: 'Descripcion Del Documento'
+        default: 'Fecha Del Documento'
     },
     pdfName: {
         type: String,
@@ -89,7 +89,7 @@ const openModal = () => {
 
 /* Estilo del contenido del modal */
 .modal-content {
-  background: white;
+  background: red;
   padding: 20px;
   border-radius: 8px;
   display: flex; 

@@ -1,7 +1,7 @@
 <template>
   <div class="tab-content">
     <div class="pb-4" v-for="anuncio in anuncios" :key="anuncio.id">
-      <NotaItem :titulo="anuncio.title" :descripcion="anuncio.description" :fecha="formatFecha(anuncio.created_at)" :url-pdf="anuncio.url"></NotaItem>
+      <NotaItem :titulo="anuncio.title" :descripcion="anuncio.description" :fecha="anuncio.fecha" :url-pdf="anuncio.url" :pdf-name="anuncio.filename"></NotaItem>
     </div>
   </div>
 </template>
@@ -22,9 +22,5 @@ const loadAnuncios = async () => {
     console.error("Error al obtener los anuncios:", error);
   }
 };
-function formatFecha(fecha){
-  let date = new Date(fecha);
-  return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-}
   loadAnuncios();
 </script>

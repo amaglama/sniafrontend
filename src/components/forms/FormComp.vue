@@ -236,7 +236,6 @@ const validateAndSubmit = () => {
       return;
     }
     loadingData.value = "Guardando datos.";
-console.log(props.form);
 
     if (isEdit.value){
       put(props.form);

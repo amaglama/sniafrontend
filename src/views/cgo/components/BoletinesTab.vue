@@ -1,7 +1,7 @@
 <template>
   <div class="tab-content">
     <div class="pb-4" v-for="anuncio in anuncios" :key="anuncio.id">
-      <NotaItem :titulo="anuncio.title" :descripcion="anuncio.description" :fecha="formatFecha(anuncio.created_at)" :url-pdf="anuncio.url"></NotaItem>
+      <NotaItem :titulo="anuncio.title" :descripcion="anuncio.description" :fecha="anuncio.fecha" :url-pdf="anuncio.url" :pdf-name="anuncio.filename"></NotaItem>
     </div>
   </div>
 </template>

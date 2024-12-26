@@ -23,8 +23,9 @@ export async function getAnunciosByType( type) {
     const response = await http.get(APIS.ANUNCIOS.GET, false, {});
     const resType = response.filter(e => e.type.toUpperCase() == type.toUpperCase());
     resType.forEach(anun => {
-      anun["url"] ||= urlsFake[Math.floor(Math.random() * 3)];
-    }); 
+      anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : urlsFake[Math.floor(Math.random() * 3)];
+      anun["fecha"] = formatFecha(anun["created_at"]);
+    });
     return resType;
   } catch (error) {
     console.error("Error fetching anuncios:", error);
@@ -44,4 +45,10 @@ export async function getAnuncio(id) {
     console.error("Error fetching anuncio:", error);
     return {};
   }
+}
+
+
+function formatFecha(fecha){
+  let date = new Date(fecha);  
+  return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
 }
