@@ -21,8 +21,9 @@ export async function getAnuncios() {
 
 export async function getAnunciosByType( type) {
   try {
-    const response = await http.get(APIS.ANUNCIOS.GET, false, {});
-    const resType = response.filter(e => e.type.toUpperCase() == type.toUpperCase());
+    const response = await http.get(APIS.ANUNCIOS.GET, false, {});console.log(response);
+    
+    const resType = response.filter(e => e.type_name.toUpperCase() == type.toUpperCase());
     resType.forEach(anun => {
       anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : '';
       //anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : urlsFake[Math.floor(Math.random() * 3)];

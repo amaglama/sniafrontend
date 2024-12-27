@@ -10,7 +10,7 @@
                     <path :d="mdiHoopHouse" />
                 </svg>
                 <p class="text-justify m-4">{{ descripcion }}</p>
-                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> {{ pdfName }}</span></span>
+                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="descargarPdf(urlPdf)"> {{ pdfName }}</span></span>
 
                 <div class="mt-10 text-green-900"> <span class="fond-bold">Fecha de Publicación </span> <span class="fond-bold text-sm">{{ fecha }}</span></div>
             </div>
@@ -79,7 +79,16 @@ const openModal = () => {
     showModal.value = true;
 };
 
-
+function descargarPdf(url) {
+    const link = document.createElement('a'); // Crear un elemento <a> dinámicamente
+      link.href = url;
+      link.download = 'archivo.pdf'; // Nombre del archivo descargado
+      link.target = '_blank'; // Nombre del archivo descargado
+      document.body.appendChild(link); // Agregarlo temporalmente al DOM
+      link.click(); // Disparar el clic para iniciar la descarga
+      document.body.removeChild(link); // Eliminar el elemento <a> del DOM
+    
+}
 </script>
 <style>
 /* Estilo del overlay */
