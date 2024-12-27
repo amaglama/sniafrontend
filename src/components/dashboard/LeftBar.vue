@@ -161,6 +161,10 @@ import RencaBar from '@/views/renca/components/RencaBar.vue';
       if (directoryPath === PAGES_PATH["cgo"] || directoryPathsRENCAPublic.find(a => a === directoryPath) !== undefined){
         key = "cgo";
       }
+
+      if (directoryPath === PAGES_PATH["pngca"] || directoryPathsRENCAPublic.find(a => a === directoryPath) !== undefined){
+        key = "pngca";
+      }
       
       //For private menus
       const menuOptions = ref(

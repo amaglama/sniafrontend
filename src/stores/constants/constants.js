@@ -1,6 +1,4 @@
 export const GENERAL_LIST = {
-    "Comunicados": "/comunicados", 
-    "Marco Legal": "/marco-legal", 
     "Configuración": "/usuario-registro", 
     "Cerrar Sesión": "/login",
     "PDF Informe": "/renca-pdf"
@@ -32,10 +30,6 @@ export const LISTS = {
         "Lista anuncio": "/anuncios",
         "Crear anuncio": "/anuncio-registro",
     },
-    "cgo": {
-        "Rentraa": "/cgo/noticias",
-    }
-
 
 };
 
@@ -43,12 +37,12 @@ export const LISTS = {
 export const LISTS_PUBLIC = {
     "renca" : {
         "Inicio": {
+            "Comunicados" : "/renca-comunicados",
             "Marco Legal": "/renca-marco-legal",
             "Requisitos RENCA": "/renca-requisitos/requerimiento-inscripcion",
             "Requisitos Renovación": "/renca-requisitos/requerimiento-inscripcion",
             "Requisitos Actualización": "/renca-requisitos/requerimiento-inscripcion",
             "Biblioteca Virtual": "/renca-biblioteca-virtual",
-            "Comunicados": "/"
         },
         "Lista de consultores RENCA" : {
             "Unipersonales": "/lista-unipersonales",
@@ -70,5 +64,12 @@ export const LISTS_PUBLIC = {
     },
     "anuncios":{
     },
-    "cgo":{}
+    "cgo":{
+        "Comunicados" : "/cgo-comunicados",
+        "Marco Legal" : "/cgo-marco-legal",
+    },
+    "pngca":{
+        "Comunicados" : "/pngca-comunicados",
+        "Marco Legal" : "/pngca-marco-legal",
+    }
 }

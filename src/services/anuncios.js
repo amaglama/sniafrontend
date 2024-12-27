@@ -19,17 +19,14 @@ export async function getAnuncios() {
   }
 }
 
-export async function getAnunciosByType( type) {
+export async function getAnunciosByTypeAndModule( id_type, id_module ) {
   try {
-    const response = await http.get(APIS.ANUNCIOS.GET, false, {});console.log(response);
-    
-    const resType = response.filter(e => e.type_name.toUpperCase() == type.toUpperCase());
-    resType.forEach(anun => {
+    const response = await http.get(`${APIS.ANUNCIOS.FILTER}${id_module}/${id_type}`, false, {});
+    response.forEach(anun => {
       anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : '';
-      //anun["url"] = anun["file"]? import.meta.env.VITE_BACK_URL + anun["file"] : urlsFake[Math.floor(Math.random() * 3)];
       anun["fecha"] = formatFecha(anun["created_at"]);
     });
-    return resType;
+    return response;
   } catch (error) {
     console.error("Error fetching anuncios:", error);
     return [];
@@ -49,3 +46,16 @@ export async function getAnuncio(id) {
     return {};
   }
 }
+
+export const comunicados = [
+  { id: 2, name: 'Noticias o Comunicados', icon: 'svg' },
+  { id: 4, name: 'Boletines', icon: 'svg' },
+  { id: 3, name: 'Manuales', icon: 'svg' },
+];
+
+export const marcoLegal = [
+  { id: 5, name: 'Ley', icon: 'svg' },
+  { id: 6, name: 'Decreto Supremo', icon: 'svg' },
+  { id: 7, name: 'Reglamento', icon: 'svg' },
+  { id: 8, name: 'Resolución', icon: 'svg' },
+];

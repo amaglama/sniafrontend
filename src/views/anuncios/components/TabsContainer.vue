@@ -17,7 +17,7 @@
   
   <script setup>
   import { ref } from 'vue';
-  import Tab from './Tab.vue';
+  import Tab from '@/views/anuncios/components/Tab.vue';
   
   const props = defineProps({
     initialTab: {

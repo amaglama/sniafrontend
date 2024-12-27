@@ -47,6 +47,7 @@ export const APIS = {
         PUT: `${BASESAPIS.ANUNCIOS}edit/`,
         DELETE: `${BASESAPIS.ANUNCIOS}delete/`,
         LIST: `${BASESAPIS.ANUNCIOS}list/`,
+        FILTER: `${BASESAPIS.ANUNCIOS}filter/`,
     },
     MODULOS_ANUNCIO: {
         LIST: `${BASESAPIS.ANUNCIOS}moduleList`,

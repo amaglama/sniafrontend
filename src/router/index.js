@@ -136,7 +136,8 @@ const routes = [
     },
     path: '/renca-marco-legal',
     name: 'renca-marco-legal',
-    component: () => import("@/views/renca/public_pages/menu_pages/MarcoLegal.vue"),
+    //component: () => import("@/views/renca/public_pages/menu_pages/MarcoLegal.vue"),
+    component: () => import("@/views/renca/public_pages/MarcoLegal.vue"),
   },
   {
     meta: {
@@ -170,7 +171,7 @@ const routes = [
     },
     path: '/renca-comunicados',
     name: 'renca-comunicados',
-    component: () => import("@/views/renca/public_pages/menu_pages/Comunicados.vue"),
+    component: () => import("@/views/renca/public_pages/Comunicados.vue"),
   },
   {
     meta: {
@@ -285,14 +286,41 @@ const routes = [
   },
   {
     meta: {
-      title: 'Noticias',
+      title: 'Comunicados',
       requiresAuth: false
     },
-    path: '/cgo/noticias',
-    name:'cgo-noticias',
-    component: () => import("@/views/cgo/pages/noticias.vue"),
+    path: '/cgo-comunicados',
+    name:'cgo-comunicados',
+    component: () => import("@/views/cgo/pages/Comunicados.vue"),
+  },
+  {
+    meta: {
+      title: 'Marco Legal',
+      requiresAuth: false
+    },
+    path: '/cgo-marco-legal',
+    name:'cgo-marco-legal',
+    component: () => import("@/views/cgo/pages/MarcoLegal.vue"),
   },
 
+  {
+    meta: {
+      title: 'Comunicados',
+      requiresAuth: false
+    },
+    path: '/pngca-comunicados',
+    name:'pngca-comunicados',
+    component: () => import("@/views/pngca/pages/Comunicados.vue"),
+  },
+  {
+    meta: {
+      title: 'Marco Legal',
+      requiresAuth: false
+    },
+    path: '/pngca-marco-legal',
+    name:'pngca-marco-legal',
+    component: () => import("@/views/pngca/pages/MarcoLegal.vue"),
+  },
 
 
 ]
