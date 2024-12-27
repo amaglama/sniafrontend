@@ -267,7 +267,7 @@ const routes = [
   },
   {
     meta: {
-      title: '',
+      title: 'Anuncio',
       requiresAuth: false
     },
     path: '/anuncio-registro',
@@ -276,7 +276,7 @@ const routes = [
   },
   {
     meta: {
-      title: '',
+      title: 'Anuncio-Editar',
       requiresAuth: false
     },
     path: '/anuncio/:item',
@@ -292,6 +292,8 @@ const routes = [
     name:'cgo-noticias',
     component: () => import("@/views/cgo/pages/noticias.vue"),
   },
+
+
 
 ]
 

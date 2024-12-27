@@ -85,8 +85,8 @@ import { APIS } from "@/stores/constants/urlsBackEnd";
             return {
                 headers: [
                             {"id" : "id"},
-                            {"module" : "Modulo"}, 
-                            {"type" : "Tipo"}, 
+                            {"module_name" : "Modulo"}, 
+                            {"type_name" : "Tipo"}, 
                             {"title" : "Titulo"}, 
                             {"description" : "Descripcion"},  
                         ],

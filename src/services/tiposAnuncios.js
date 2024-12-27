@@ -1,3 +1,4 @@
+import { http } from '@/services/https';
 import { APIS } from '@/stores/constants/urlsBackEnd';
 export async function getTipos() {
   try {

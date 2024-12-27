@@ -49,10 +49,10 @@ export const APIS = {
         LIST: `${BASESAPIS.ANUNCIOS}list/`,
     },
     MODULOS_ANUNCIO: {
-        LIST: `${BASESAPIS.ANUNCIOS}moduleList/`,
+        LIST: `${BASESAPIS.ANUNCIOS}moduleList`,
     },
     TIPOS_ANUNCIO: {
-        LIST: `${BASESAPIS.ANUNCIOS}typeList/`,
+        LIST: `${BASESAPIS.ANUNCIOS}typeList`,
     },
 };
 

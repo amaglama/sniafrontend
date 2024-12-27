@@ -67,11 +67,13 @@ import SelectForm from '@/components/forms/select/SelectForm.vue';
 import FormComp from '@/components/forms/FormComp.vue';
 import FileForm from "@/components/forms/file/FileForm.vue";
 import { validationInputField } from '@/components/forms/validationInput';
-import { ref, reactive, onMounted, watch } from 'vue';
+import { ref, reactive, onBeforeMount ,onMounted, watch } from 'vue';
 import { MAX_FILE_SIZE } from '@/stores/constants/constantsRENCA';
 import { MAX_LONG_LENGTH_INPUT, MAX_SHORT_LENGTH_INPUT, MAX_LENGTH_INPUT, MAX_DESCRIPTION_INPUT, MAX_LONG_DESCRIPTION_INPUT } from '@/stores/constants/pages';
 import { APIS } from '@/stores/constants/urlsBackEnd';
 import { getAnuncio } from '@/services/anuncios';
+import { getModulos } from "@/services/modulesAnuncios";
+import { getTipos } from "@/services/tiposAnuncios";
 import { useRoute } from 'vue-router';
 import { decryptMe } from '@/stores/utils/encryption';
 import PdfPreview from '@/views/cgo/components/PdfPreview.vue';
@@ -125,27 +127,39 @@ export default {
         const formErrors = ref({});
         const selectedModulo = ref({});
         const selectedTipo = ref({});
-        const modulos = ref([{ name: 'Renca', id: 1 }, { name: 'Rentraa', id: 2 },]);
-        const tipos = ref([{ name: 'Comunicado', id: 1 }, { name: 'Boletin', id: 2 }, { name: 'Manual', id: 3 },]);
+        const modulos = ref([]);
+        const tipos = ref([]);
 
         const loadAnuncio = async () => {
             console.log(id)
             if (id !== null) {
                 const anuncio = await getAnuncio(id);
-                console.log("ver aqui", anuncio)
-                selectedModulo.value = modulos.value.find(m => m["name"].toUpperCase() == anuncio.module.toUpperCase())["name"].toUpperCase();
+                selectedModulo.value = modulos.value.find(m => m["id"] == anuncio.id_module)["name"];
 
-                selectedTipo.value = tipos.value.find(m => m["name"].toUpperCase() == anuncio.type.toUpperCase())["name"].toUpperCase();
+                selectedTipo.value = tipos.value.find(m => m["id"] == anuncio.id_type)["name"];
                 form.id = anuncio.id;
-                form.id_type = anuncio.type;
-                form.id_module = anuncio.module;
+                form.id_type = anuncio.id_type;
+                form.id_module = anuncio.id_module;
                 form.title = anuncio.title;
                 form.description = anuncio.description;
             }
         };
 
+        const loadModulos = async () => {
+            modulos.value = await getModulos();
+        };
+
+        const loadTipos = async () => {
+            tipos.value = await getTipos();
+        };
+
+        onBeforeMount(() => {
+            loadModulos();
+            loadTipos();
+        })
         onMounted(() => {
             loadAnuncio();
+            
         });
 
         function changePDF() {
@@ -156,18 +170,17 @@ export default {
             }
         }
         function onChangeModulo(name) {
-            console.log("change modulo");
-
+            
             const modulo = modulos.value.find(s => s["name"].toUpperCase() === name);
             if (modulo) {
-                form.id_module = modulo["name"];
+                form.id_module = modulo["id"];
             }
         }
 
         function onChangeTipo(name) {
             const tipo = tipos.value.find(s => s["name"].toUpperCase() === name);
             if (tipo) {
-                form.id_type = tipo["name"];
+                form.id_type = tipo["id"];
             }
         }
 
@@ -175,8 +188,8 @@ export default {
             return {
                 "title": form.title,
                 "description": form.description,
-                "type": form.id_type,
-                "module": form.id_module,
+                "id_type": form.id_type,
+                "id_module": form.id_module,
                 "group_id": 1,
                 "menus_ids": [],
                 "permissions_ids": []
