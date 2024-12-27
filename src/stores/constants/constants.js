@@ -1,4 +1,6 @@
-export const GENERAL_LIST = { 
+export const GENERAL_LIST = {
+    "Comunicados": "/comunicados", 
+    "Marco Legal": "/marco-legal", 
     "Configuración": "/usuario-registro", 
     "Cerrar Sesión": "/login",
     "PDF Informe": "/renca-pdf"

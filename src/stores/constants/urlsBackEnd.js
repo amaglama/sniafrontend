@@ -48,5 +48,11 @@ export const APIS = {
         DELETE: `${BASESAPIS.ANUNCIOS}delete/`,
         LIST: `${BASESAPIS.ANUNCIOS}list/`,
     },
+    MODULOS_ANUNCIO: {
+        LIST: `${BASESAPIS.ANUNCIOS}moduleList/`,
+    },
+    TIPOS_ANUNCIO: {
+        LIST: `${BASESAPIS.ANUNCIOS}typeList/`,
+    },
 };
 
