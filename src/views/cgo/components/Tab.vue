@@ -9,7 +9,7 @@
         <p>{{ name }}</p>
         <svg
             :viewBox="'0 0 24 24'"
-            class="w-6 h-6 text-black"
+            class="w-6 h-6"
             fill="currentColor">
             <path :d="mdiFile" />
         </svg>
@@ -18,7 +18,7 @@
   </template>
   
   <script setup>
-  import { mdiFile } from '@mdi/js';
+  import { mdiFile, mdiFileTableBox, mdiFirebase, mdiFileSign, mdiPaperclip, mdiClipboardFile, mdiFileDownload } from '@mdi/js';
   defineProps({
     name: {
       type: String,
@@ -38,23 +38,26 @@
   <style scoped>
   .tab-button {
     padding: 12px 24px;
-    border: none;
+    border: solid 1px #e0f1e6;
     background: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
     transition: all 0.3s ease;
     flex: 1;
     color: rgb(56, 142, 60);
   }
   
   .tab-button:hover {
-    background-color: rgb(56, 142, 60);
-    color: white;
+    background-color: #e0f1e6;
+    color: #007bff;
+    font-weight: 600;
   }
   
   .tab-button.active {
-    border-bottom: 2px solid #007bff;
+    border-bottom: 5px solid #007bff;
+    background: #e0f1e6;
     color: #007bff;
-    font-weight: bold;
+    font-weight: 700;
   }
   </style>

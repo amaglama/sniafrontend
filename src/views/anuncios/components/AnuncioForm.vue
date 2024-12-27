@@ -69,7 +69,7 @@ import FileForm from "@/components/forms/file/FileForm.vue";
 import { validationInputField } from '@/components/forms/validationInput';
 import { ref, reactive, onMounted, watch } from 'vue';
 import { MAX_FILE_SIZE } from '@/stores/constants/constantsRENCA';
-import { MAX_LONG_LENGTH_INPUT, MAX_SHORT_LENGTH_INPUT, MAX_LENGTH_INPUT, MAX_DESCRIPTION_INPUT } from '@/stores/constants/pages';
+import { MAX_LONG_LENGTH_INPUT, MAX_SHORT_LENGTH_INPUT, MAX_LENGTH_INPUT, MAX_DESCRIPTION_INPUT, MAX_LONG_DESCRIPTION_INPUT } from '@/stores/constants/pages';
 import { APIS } from '@/stores/constants/urlsBackEnd';
 import { getAnuncio } from '@/services/anuncios';
 import { useRoute } from 'vue-router';
@@ -120,7 +120,7 @@ export default {
             id_module: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
             id_type: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
             title: validationInputField("text", true, MAX_LONG_LENGTH_INPUT),
-            description: validationInputField("text", true, MAX_DESCRIPTION_INPUT),
+            description: validationInputField("text", true, MAX_LONG_DESCRIPTION_INPUT),
         });
         const formErrors = ref({});
         const selectedModulo = ref({});
