@@ -3,12 +3,22 @@
       class="tab-button" 
       :class="{ active: isActive }"
       @click="$emit('click')"
+      
     >
-      {{ name }}
+      <div class="flex justify-between">
+        <p>{{ name }}</p>
+        <svg
+            :viewBox="'0 0 24 24'"
+            class="w-6 h-6 text-black"
+            fill="currentColor">
+            <path :d="mdiFile" />
+        </svg>
+      </div>
     </button>
   </template>
   
   <script setup>
+  import { mdiFile } from '@mdi/js';
   defineProps({
     name: {
       type: String,
@@ -17,6 +27,10 @@
     isActive: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: mdiFile
     }
   });
   </script>

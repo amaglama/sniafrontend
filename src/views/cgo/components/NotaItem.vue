@@ -3,6 +3,12 @@
         <Titles class="justify-center border-b-2">{{ titulo }}</Titles>
         <div class="flex justify-stretch border-b-2 gap-4">
             <div class="detalles">
+                <svg
+                    :viewBox="'0 0 24 24'"
+                    class="w-8 h-8 text-red-400"
+                    fill="currentColor">
+                    <path :d="mdiHoopHouse" />
+                </svg>
                 <p class="text-justify m-4">{{ descripcion }}</p>
                 <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> {{ pdfName }}</span></span>
 
@@ -38,6 +44,7 @@ import BaseButton from "@/components/ComponentsOne/BaseButton.vue";
 import CardBoxModal from "@/components/ComponentsOne/CardBoxModal.vue";
 import PdfPreview from "@/views/cgo/components/PdfPreview.vue";
 import { computed, ref } from "vue";
+import { mdiHoopHouse } from "@mdi/js";
 
 defineProps({
     titulo: {
@@ -71,6 +78,8 @@ const closeModal = () => {
 const openModal = () => {
     showModal.value = true;
 };
+
+
 </script>
 <style>
 /* Estilo del overlay */
