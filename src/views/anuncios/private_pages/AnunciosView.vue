@@ -85,9 +85,9 @@ import { APIS } from "@/stores/constants/urlsBackEnd";
             function changeSearch() {
                 const wordsF = searchQuery.value.toLowerCase();
                 filtrados.value = anuncios.value.filter( a => 
-                    a.title.toLowerCase().includes(wordsF) 
-                    || a.description.toLowerCase().includes(wordsF) 
-                    || a.type_name.toLowerCase().includes(wordsF) 
+                    //a.title.toLowerCase().includes(wordsF) 
+                    //|| a.description.toLowerCase().includes(wordsF) 
+                    a.type_name.toLowerCase().includes(wordsF) 
                     || a.module_name.toLowerCase().includes(wordsF)
                 );
             }
