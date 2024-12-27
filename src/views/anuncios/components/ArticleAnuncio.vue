@@ -7,7 +7,7 @@
                     :viewBox="'0 0 24 24'"
                     class="w-8 h-8 text-red-400"
                     fill="currentColor">
-                    <path :d="mdiHoopHouse" />
+                    <path :d="mdiFilePdfBox" />
                 </svg>
                 <p class="text-justify m-4">{{ descripcion }}</p>
                 <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="descargarPdf(urlPdf)"> {{ pdfName }}</span></span>
@@ -44,7 +44,7 @@ import BaseButton from "@/components/ComponentsOne/BaseButton.vue";
 import CardBoxModal from "@/components/ComponentsOne/CardBoxModal.vue";
 import PdfPreview from "@/views/cgo/components/PdfPreview.vue";
 import { computed, ref } from "vue";
-import { mdiHoopHouse } from "@mdi/js";
+import { mdiFilePdfBox } from "@mdi/js";
 
 defineProps({
     titulo: {
