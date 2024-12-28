@@ -1,28 +1,34 @@
 <template>
     <div class="flex h-24 justify-end content-center p-2">
         <div class="flex h-12">
-            <ButtonComp 
-                label="AGREGAR" 
-                :on-click="()=> goTo('/anuncio-registro')" 
-                class-name="bg-terciary hover:bg-secondary text-black font-bold rounded-md"
-                ></ButtonComp>
+            <ButtonComp label="AGREGAR" :on-click="() => goTo('/anuncio-registro')"
+                class-name="bg-terciary hover:bg-secondary text-black font-bold rounded-md"></ButtonComp>
         </div>
     </div>
     <div class="flex justify-center">
-        <div class="w-4/5 max-lg:w-full max-lg:p-2 mb-5">
-            <input type="text" v-model="searchQuery" @input="changeSearch" placeholder="Filtrar datos..." class="input-elevated">    
+        <div class="w-4/5 max-lg:w-full p-4 flex gap-5 max-md:flex-col">
+            <div class="flex-1">
+                <input type="text" v-model="searchQuery" @input="changeSearch" placeholder="Buscar datos..."
+                    class="input-elevated">
+            </div>
+            <div class="flex-1 flex gap-5 max-sm:flex-col">
+                <select name="moduleSelect" v-model="selectedModulo" @change="changeFiltro"
+                    class="px-3 py-2 max-w-full focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800">
+                    <option value="">Selecciona un Modulo</option>
+                    <option :value="op.id" v-for="op in modulos">{{ op.name }}</option>
+                </select>
+                <select name="typeSelect" v-model="selectedTipo" @change="changeFiltro"
+                    class="px-3 py-2 max-w-full focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800">
+                    <option value="" class="text-opacity-25 text-green-400">Selecciona un Tipo</option>
+                    <option :value="op.id" v-for="op in tipos">{{ op.name }}</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="flex justify-center">
         <div class="w-4/5 max-lg:w-full max-lg:p-2">
-            <TableComp 
-                :headers="headers" 
-                :items="filtrados" 
-                :options="options" 
-                :exclude="exclude"
-                label="anuncio"
-                :on-click-edit="onClickEdit"
-                v-on:confirm-delete="onConfirmDelete">
+            <TableComp :headers="headers" :items="filtrados" :options="options" :exclude="exclude" label="anuncio"
+                :on-click-edit="onClickEdit" v-on:confirm-delete="onConfirmDelete">
             </TableComp>
         </div>
     </div>
@@ -33,111 +39,149 @@
 import TableComp from '@/components/table/TableComp.vue';
 import ButtonComp from '@/components/essencials/ButtonComp.vue';
 import { useMainStore } from '@/stores/main';
-import { ref, computed, onMounted, onUpdated  } from 'vue';
+import { ref, computed, onMounted} from 'vue';
 import goTo from '@/stores/utils/goRoute';
 import { getAnuncios } from '@/services/anuncios';
 import { http } from "@/services/https";
 import { APIS } from "@/stores/constants/urlsBackEnd";
+import { getModulos } from "@/services/modulesAnuncios";
+import { getTipos } from "@/services/tiposAnuncios";
 
-    const mainStore = useMainStore()
-    const items = computed(() => mainStore.clients)
-    
-    export default {
-        name: "UsersView",
-        components: {
-            TableComp,
-            ButtonComp,
-        },
-        setup(){
-            const anuncios = ref([]);
-            const searchQuery = ref('');
-            const filtrados = ref([]);
-            const loadAnuncios = async () => {
-                try {
-                    
-                    const result = await getAnuncios();                    
-                    anuncios.value = result;
-                    filtrados.value = result;
-                } catch (error) {
-                    console.error("Error al obtener los anuncios:", error);
-                }
-            };
-            onMounted(() => {
-                loadAnuncios();
-            });
-            
-            function onClickEdit(item){
-                goTo(`/anuncio/${item["id"]}`);                
+const mainStore = useMainStore()
+const items = computed(() => mainStore.clients)
+
+export default {
+    name: "UsersView",
+    components: {
+        TableComp,
+        ButtonComp,
+    },
+    setup() {
+        const anuncios = ref([]);
+        const searchQuery = ref('');
+        const filtrados = ref([]);
+        const tipos = ref([]);
+        const modulos = ref([]);
+        const selectedTipo = ref('');
+        const selectedModulo = ref('');
+        const loadAnuncios = async () => {
+            try {
+                const result = await getAnuncios();
+                anuncios.value = result;
+                filtrados.value = result;
+            } catch (error) {
+                console.error("Error al obtener los anuncios:", error);
             }
-            
-            function onConfirmDelete(item) {
-                try {
-                    let deleteUrl = `${APIS.ANUNCIOS.DELETE}${item}`;
-                    const res = http.delete(deleteUrl, false,{},"No se ha logrado eliminar");    
-                    res.then((data) => {
-                        loadAnuncios();
-                    });                    
-                } catch (error) {
-                    console.error(error);
-                }
-                
+        };
+        const loadTipos = async () => {
+            try {
+                const result = await getTipos();
+                tipos.value = result;
+            } catch (error) {
+                console.error("Error al obtener los tipos:", error);
             }
-            function changeSearch() {
-                const wordsF = searchQuery.value.toLowerCase();
-                filtrados.value = anuncios.value.filter( a => 
-                    a.title.toLowerCase().includes(wordsF) 
-                    || a.description.toLowerCase().includes(wordsF) 
-                    || a.type_name.toLowerCase().includes(wordsF) 
-                    || a.module_name.toLowerCase().includes(wordsF)
-                );
+        };
+        const loadModulos = async () => {
+            try {
+                const result = await getModulos();
+                modulos.value = result;
+            } catch (error) {
+                console.error("Error al obtener los modulos:", error);
             }
-            return {
-                goTo, 
-                anuncios: anuncios,
-                onConfirmDelete,
-                onClickEdit,
-                searchQuery: searchQuery,
-                changeSearch,
-                filtrados,
-            };
-        },
-        data() {
-            return {
-                headers: [
-                            {"id" : "id"},
-                            {"module_name" : "Modulo"}, 
-                            {"type_name" : "Tipo"}, 
-                            {"title" : "Titulo"}, 
-                            {"description" : "Descripcion"},  
-                        ],
-                exclude: [ "id" ],
-                options: [ "update","delete"],//see
+        };
+        onMounted(() => {
+            loadAnuncios();
+            loadTipos();
+            loadModulos();
+        });
+
+        function onClickEdit(item) {
+            goTo(`/anuncio/${item["id"]}`);
+        }
+
+        function onConfirmDelete(item) {
+            try {
+                let deleteUrl = `${APIS.ANUNCIOS.DELETE}${item}`;
+                const res = http.delete(deleteUrl, false, {}, "No se ha logrado eliminar");
+                res.then((data) => {
+                    loadAnuncios();
+                });
+            } catch (error) {
+                console.error(error);
             }
-        },
-    }
+
+        }
+        function changeSearch() {
+            const wordsF = searchQuery.value.toLowerCase();
+            filtrados.value = anuncios.value.filter(a =>
+                a.title.toLowerCase().includes(wordsF)
+                || a.description.toLowerCase().includes(wordsF)
+                || a.type_name.toLowerCase().includes(wordsF)
+                || a.module_name.toLowerCase().includes(wordsF)
+            );
+        }
+        function changeFiltro() {
+            filtrados.value = anuncios.value.filter(a =>
+                a.id_type.includes(selectedTipo.value)
+                && a.id_module.includes(selectedModulo.value)
+            );
+        }
+        return {
+            goTo,
+            anuncios: anuncios,
+            onConfirmDelete,
+            onClickEdit,
+            searchQuery: searchQuery,
+            changeSearch,
+            changeFiltro,
+            filtrados,
+            tipos,
+            selectedTipo,
+            modulos,
+            selectedModulo,
+        };
+    },
+    data() {
+        return {
+            headers: [
+                { "id": "id" },
+                { "module_name": "Modulo" },
+                { "type_name": "Tipo" },
+                { "title": "Titulo" },
+                { "description": "Descripcion" },
+            ],
+            exclude: ["id"],
+            options: ["update", "delete"],//see
+        }
+    },
+}
 </script>
 <style>
-.input-elevated{
-font-size: 22px;
-line-height: 1.5;
-border: 1px solid #388e3c;
-background: #FFFFFF;
-background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='bg-green-700' width='30' height='30' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
-background-repeat: no-repeat;
-background-position: 10px 10px;
-background-size: 30px 30px;
-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.08);
-border-radius: 5px;
-width: 50%;
-padding: .5em 1em .5em 2.5em;
-} 
+.input-elevated {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.5;
+    border: 1px solid #388e3c;
+    background: #FFFFFF;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='bg-green-700' width='20' height='20' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    background-size: 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    padding: .5em 1em .5em 2.5em;
+}
 
-.input-elevated::placeholder{
-  color: #388e3c;
+.input-elevated::placeholder {
+    color: #388e3c;
 }
 
 .input-elevated:focus {
-  outline: none;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+    outline: none;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.flex-2{
+    flex: 2 2;
 }
 </style>
