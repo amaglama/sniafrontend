@@ -29,7 +29,7 @@
                                 <div class="flex w-1/3">
                                     <InputForm name="title" v-model="form.title" type="text" placeholder="Titulo"
                                         label="Titulo" :required="true" :errors="formErrors['title']"
-                                        :form-types="formTypes['title']" class-name="" />
+                                        :form-types="formTypes['title']" class-name="" :is-to-upper-case="false" />
                                 </div>
                             </div>
                             <div class="flex">
@@ -37,7 +37,7 @@
                                     <InputForm name="description" v-model="form.description" type="textarea"
                                         placeholder="Descripcion" label="Descripcion" :required="true"
                                         :errors="formErrors['description']" :form-types="formTypes['description']"
-                                        class-name="w-full mb-20" />
+                                        class-name="w-full mb-20" :is-to-upper-case="false" />
                                     <!-- [&>p]:text-red-600 -->
                                 </div>
                             </div>
