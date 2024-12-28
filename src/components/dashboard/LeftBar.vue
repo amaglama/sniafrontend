@@ -12,7 +12,7 @@
           Menú
         </h1>
         <FormField 
-          label="Menu"
+          label=""
           v-if="isAnimationCompleted && menuOptionsPublic.length > 0" 
           :class="`${isLeftbarVisible? '' : 'invisible'} ${menuOptionsPublic.length > 0? '' : 'hidden'}`">
           <ul>
