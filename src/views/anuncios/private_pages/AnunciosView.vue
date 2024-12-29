@@ -83,6 +83,7 @@ export default {
             } catch (error) {
                 console.error("Error al obtener los tipos:", error);
             }
+<<<<<<< HEAD
         };
         const loadModulos = async () => {
             try {
@@ -90,6 +91,16 @@ export default {
                 modulos.value = result;
             } catch (error) {
                 console.error("Error al obtener los modulos:", error);
+=======
+            function changeSearch() {
+                const wordsF = searchQuery.value.toLowerCase();
+                filtrados.value = anuncios.value.filter( a => 
+                    //a.title.toLowerCase().includes(wordsF) 
+                    //|| a.description.toLowerCase().includes(wordsF) 
+                    a.type_name.toLowerCase().includes(wordsF) 
+                    || a.module_name.toLowerCase().includes(wordsF)
+                );
+>>>>>>> 03690f7b0e4c7b821cbb07a0a877522253be5d58
             }
         };
         onMounted(() => {
