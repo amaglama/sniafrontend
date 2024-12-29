@@ -46,16 +46,3 @@ export async function getAnuncio(id) {
     return {};
   }
 }
-
-export const comunicados = [
-  { id: 2, name: 'Noticias o Comunicados', icon: 'svg' },
-  { id: 4, name: 'Boletines', icon: 'svg' },
-  { id: 3, name: 'Manuales', icon: 'svg' },
-];
-
-export const marcoLegal = [
-  { id: 5, name: 'Ley', icon: 'svg' },
-  { id: 6, name: 'Decreto Supremo', icon: 'svg' },
-  { id: 7, name: 'Reglamento', icon: 'svg' },
-  { id: 8, name: 'Resolución', icon: 'svg' },
-];

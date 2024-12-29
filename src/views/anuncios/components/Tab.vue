@@ -5,14 +5,13 @@
       @click="$emit('click')"
       
     >
-      <div class="flex justify-between">
-        <p>{{ name }}</p>
-        <svg
+      <div class="flex justify-center">
+        <p><svg
             :viewBox="'0 0 24 24'"
-            class="w-6 h-6"
+            class="w-6 h-6 inline mr-2"
             fill="currentColor">
-            <path :d="mdiFile" />
-        </svg>
+            <path :d="icon" />
+        </svg> {{ name }}</p>
       </div>
     </button>
   </template>
@@ -39,6 +38,7 @@
   .tab-button {
     padding: 12px 24px;
     border: solid 1px #e0f1e6;
+    border-radius: 5px;
     background: none;
     cursor: pointer;
     font-size: 20px;

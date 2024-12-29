@@ -5,6 +5,7 @@
           v-for="tab in tabs" 
           :key="tab.id"
           :name="tab.name"
+          :icon="tab.icon"
           :isActive="activeTab === tab.id"
           @click="setActiveTab(tab.id)"
         />
@@ -45,8 +46,10 @@
   
   .tabs-header {
     display: flex;
+    gap: 10px;
     justify-content: space-between;
     border-bottom: 2px solid #eee;
+    margin: 20px 0;
   }
   
   .tabs-content {

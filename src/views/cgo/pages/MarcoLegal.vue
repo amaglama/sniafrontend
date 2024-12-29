@@ -18,7 +18,7 @@
 import CardBox from "@/components/ComponentsOne/CardBox.vue";
 import TabsContainer from '@/views/anuncios/components/TabsContainer.vue';
 import TabAnuncio from "@/views/anuncios/components/TabAnuncio.vue";
-import { marcoLegal } from "@/services/anuncios";
+import { marcoLegal } from "@/services/tiposAnuncios";
 import { ref } from 'vue';
 
 const titulo = "COMISION GUBERNAMENTAL DEL OZONO-BOLIVIA";

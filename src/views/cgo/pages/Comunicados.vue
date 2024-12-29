@@ -6,9 +6,9 @@
         <div>
             <TabsContainer :tabs="comunicados" :initialTab="2">
                 <template #default="{ activeTab }">
-                    <TabAnuncio v-if="activeTab === 2" :id_modulo="1" :id_tipo="2"/>
-                    <TabAnuncio v-if="activeTab === 4" :id_modulo="1" :id_tipo="4"/>
-                    <TabAnuncio v-if="activeTab === 3" :id_modulo="1" :id_tipo="3"/>
+                    <div v-for="tab in comunicados">
+                        <TabAnuncio v-if="activeTab === tab.id" :id_modulo="2" :id_tipo="tab.id"/>
+                    </div>
                 </template>
             </TabsContainer>
         </div>
@@ -18,7 +18,7 @@
 import CardBox from "@/components/ComponentsOne/CardBox.vue";
 import TabsContainer from '@/views/anuncios/components/TabsContainer.vue';
 import TabAnuncio from "@/views/anuncios/components/TabAnuncio.vue";
-import { comunicados } from "@/services/anuncios";
+import { comunicados } from "@/services/tiposAnuncios";
 import { ref } from 'vue';
 
 const titulo = "COMISION GUBERNAMENTAL DEL OZONO-BOLIVIA";

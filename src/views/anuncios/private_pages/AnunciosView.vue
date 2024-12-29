@@ -7,8 +7,10 @@
     </div>
     <div class="flex justify-center">
         <div class="w-4/5 max-lg:w-full p-4 flex gap-5 max-md:flex-col">
-            <div class="flex-1">
-                <input type="text" v-model="searchQuery" @input="changeSearch" placeholder="Buscar datos..."
+            <div class="flex-1 relative">
+                <svg :viewBox="'0 0 24 24'" class="w-8 h-8 text-green-700 absolute inset-2" fill="currentColor">
+                    <path :d="mdiMagnify" />
+                </svg><input type="text" v-model="searchQuery" @input="changeSearch" placeholder="Buscar datos..."
                     class="input-elevated">
             </div>
             <div class="flex-1 flex gap-5 max-sm:flex-col">
@@ -39,13 +41,14 @@
 import TableComp from '@/components/table/TableComp.vue';
 import ButtonComp from '@/components/essencials/ButtonComp.vue';
 import { useMainStore } from '@/stores/main';
-import { ref, computed, onMounted} from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import goTo from '@/stores/utils/goRoute';
 import { getAnuncios } from '@/services/anuncios';
 import { http } from "@/services/https";
 import { APIS } from "@/stores/constants/urlsBackEnd";
 import { getModulos } from "@/services/modulesAnuncios";
 import { getTipos } from "@/services/tiposAnuncios";
+import { mdiMagnify } from "@mdi/js";
 
 const mainStore = useMainStore()
 const items = computed(() => mainStore.clients)
@@ -139,6 +142,7 @@ export default {
             selectedTipo,
             modulos,
             selectedModulo,
+            mdiMagnify: mdiMagnify,
         };
     },
     data() {
@@ -163,7 +167,6 @@ export default {
     line-height: 1.5;
     border: 1px solid #388e3c;
     background: #FFFFFF;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='bg-green-700' width='20' height='20' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
     background-repeat: no-repeat;
     background-position: 10px 10px;
     background-size: 20px 20px;
