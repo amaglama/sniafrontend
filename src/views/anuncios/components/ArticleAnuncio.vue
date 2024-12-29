@@ -14,7 +14,9 @@
                         <span class="fond-bold">Publicado el </span><span class="fond-bold text-sm">{{ fecha }}</span>
                     </div>
                     <div class="flex justify-center pt-2">
-                        <BaseButton label="Descargar" type="button" active="true" outline="false" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary"></BaseButton>
+                        <button @click="descargarPdf(urlPdf)"
+                            class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary px-8 py-2">
+                            Descargar</button>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,6 @@ import BaseButton from "@/components/ComponentsOne/BaseButton.vue";
 import CardBoxModal from "@/components/ComponentsOne/CardBoxModal.vue";
 import PdfPreview from "@/views/cgo/components/PdfPreview.vue";
 import { computed, ref } from "vue";
-import { mdiFilePdfBox } from "@mdi/js";
 
 defineProps({
     titulo: {
@@ -71,53 +72,55 @@ const showModal = ref(false);
 
 // Método para cerrar el modal
 const closeModal = () => {
-  showModal.value = false;
+    showModal.value = false;
 };
 const openModal = () => {
     showModal.value = true;
 };
 
 function descargarPdf(url) {
+    const urlBase = import.meta.env.VITE_API_URL;
+    const name = urlBase + '/announcements/download/' + url.split('/').pop();
     const link = document.createElement('a'); // Crear un elemento <a> dinámicamente
-      link.href = url;
-      link.download = 'archivo.pdf'; // Nombre del archivo descargado
-      link.target = '_blank'; // Nombre del archivo descargado
-      document.body.appendChild(link); // Agregarlo temporalmente al DOM
-      link.click(); // Disparar el clic para iniciar la descarga
-      document.body.removeChild(link); // Eliminar el elemento <a> del DOM
-    
+    link.href = name;
+    link.download = 'archivo.pdf'; // Nombre del archivo descargado
+    link.target = '_blank'; // Nombre del archivo descargado
+    document.body.appendChild(link); // Agregarlo temporalmente al DOM
+    link.click(); // Disparar el clic para iniciar la descarga
+    document.body.removeChild(link); // Eliminar el elemento <a> del DOM
+
 }
 </script>
 <style>
 /* Estilo del overlay */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 /* Estilo del contenido del modal */
 .modal-content {
-  background: red;
-  padding: 20px;
-  border-radius: 8px;
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  overflow: auto;
-  max-height: 100vh;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: red;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: auto;
+    max-height: 100vh;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.banner{
+.banner {
     background-image: url('@/assets/images/splash.png');
     background-size: cover;
 }
