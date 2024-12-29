@@ -1,32 +1,30 @@
 <template>
-    <CardBox class="border-2">
-        <Titles class="justify-center border-b-2">{{ titulo }}</Titles>
-        <div class="flex justify-stretch border-b-2 gap-4">
-            <div class="detalles">
-                <svg
-                    :viewBox="'0 0 24 24'"
-                    class="w-8 h-8 text-red-400"
-                    fill="currentColor">
-                    <path :d="mdiFilePdfBox" />
-                </svg>
-                <p class="text-justify m-4">{{ descripcion }}</p>
-                <span>Adjunto: <span class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="descargarPdf(urlPdf)"> {{ pdfName }}</span></span>
-
-                <div class="mt-10 text-green-900"> <span class="fond-bold">Fecha de Publicación </span> <span class="fond-bold text-sm">{{ fecha }}</span></div>
+    <CardBox class="border-2 border-green-500 banner">
+        <Titles class="justify-left border-b-2 border-green-500">{{ titulo }}</Titles>
+        <div class="flex gap-4">
+            <div class="detalles flex w-full gap-5">
+                <div class="max-sm:hidden">
+                    <div class=" border-2 my-4 shadow">
+                        <PdfPreview :url="urlPdf" :width="200"></PdfPreview>
+                    </div>
+                </div>
+                <div class="grow flex flex-col">
+                    <p class="text-justify m-4 grow mt-10">{{ descripcion }} </p>
+                    <div class="w-full m-4 text-green-900">
+                        <span class="fond-bold">Publicado el </span><span class="fond-bold text-sm">{{ fecha }}</span>
+                    </div>
+                    <div class="flex justify-center pt-2">
+                        <BaseButton label="Descargar" type="button" active="true" outline="false" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary"></BaseButton>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="document grow">
-                <PdfPreview :url="urlPdf" :width="300"></PdfPreview>
-            </div> -->
         </div>
         <div>
-            <div class="flex h-12 justify-end pt-2">
             <!-- <ButtonComp 
                 label="Ver Contenido Completo" 
                 :on-click="openModal" 
                 class-name="bg-terciary hover:bg-secondary text-black font-bold rounded-md"
                 ></ButtonComp> -->
-            <BaseButton label="Ver Contenido Completo" type="button" active="true" outline="false" :href="urlPdf" target="_blank" class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary"></BaseButton>
-        </div>
         </div>
     </CardBox>
     <!-- <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
@@ -117,5 +115,10 @@ function descargarPdf(url) {
   overflow: auto;
   max-height: 100vh;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner{
+    background-image: url('@/assets/images/splash.png');
+    background-size: cover;
 }
 </style>

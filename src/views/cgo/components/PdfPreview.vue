@@ -20,7 +20,7 @@ const { pdf, pages } = usePDF(props.url)
 
 <template>
   <div class="">
-    <div class="flex justify-center items-center text-xs">
+    <!-- <div class="flex justify-center items-center text-xs">
       <button @click="page = page > 1 ? page - 1 : page">
         Anterior
       </button>
@@ -28,7 +28,7 @@ const { pdf, pages } = usePDF(props.url)
       <button @click="page = page < pages ? page + 1 : page">
         Siguiente
       </button>
-    </div>
+    </div> -->
     <div class="flex justify-center">
         <VuePDF :pdf="pdf" :page="page" :width="width"/>
     </div>
