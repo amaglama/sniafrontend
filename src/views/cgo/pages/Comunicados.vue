@@ -7,7 +7,7 @@
             <TabsContainer :tabs="comunicados" :initialTab="2">
                 <template #default="{ activeTab }">
                     <div v-for="tab in comunicados">
-                        <TabAnuncio v-if="activeTab === tab.id" :id_modulo="2" :id_tipo="tab.id"/>
+                        <TabAnuncio v-if="activeTab === tab.id" :id_modulo="1" :id_tipo="tab.id"/>
                     </div>
                 </template>
             </TabsContainer>
