@@ -43,7 +43,7 @@
                             </div>
                             <div class="flex">
                                 <div>
-                                    <FileForm name="file" label="Documento de Relacionado.pdf"
+                                    <FileForm name="file" label="Cargar archivo PDF"
                                         :files-allowed="filesAllowed" v-model="form.file" :errors="formErrors['file']"
                                         :form-types="formTypes['file']" :max-size-file="MAX_FILE_SIZE">
                                     </FileForm>
