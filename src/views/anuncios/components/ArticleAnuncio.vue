@@ -123,5 +123,6 @@ function descargarPdf(url) {
 .banner {
     background-image: url('@/assets/images/splash.png');
     background-size: cover;
+    background-position: top right;
 }
 </style>
