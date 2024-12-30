@@ -14,16 +14,22 @@
                     class="input-elevated">
             </div> -->
             <div class="flex-1 flex gap-5 max-sm:flex-col">
-                <select name="moduleSelect" v-model="selectedModulo" @change="changeFiltro"
-                    class="px-3 py-2 max-w-full focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800">
-                    <option value="">Selecciona un Modulo</option>
-                    <option :value="op.id" v-for="op in modulos">{{ op.name }}</option>
-                </select>
-                <select name="typeSelect" v-model="selectedTipo" @change="changeFiltro"
-                    class="px-3 py-2 max-w-full focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800">
-                    <option value="" class="text-opacity-25 text-green-400">Selecciona un Tipo</option>
-                    <option :value="op.id" v-for="op in tipos">{{ op.name }}</option>
-                </select>
+                <div class="flex-1">
+                    <label for="moduleSelect">Modulo</label>
+                    <select name="moduleSelect" v-model="selectedModulo" @change="changeFiltro" 
+                    class="mt-2 px-3 py-2 focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800" id="moduleSelect">
+                        <option value="">Selecciona un Modulo</option>
+                        <option :value="op.id" v-for="op in modulos">{{ op.name }}</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label for="typeSelect">Tipo</label>
+                    <select name="typeSelect" v-model="selectedTipo" @change="changeFiltro"
+                        class="mt-2 px-3 py-2 focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800" id="typeSelect">
+                        <option value="" class="text-opacity-25 text-green-400">Selecciona un Tipo</option>
+                        <option :value="op.id" v-for="op in tipos">{{ op.name }}</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
