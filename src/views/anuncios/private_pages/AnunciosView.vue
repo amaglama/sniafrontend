@@ -7,12 +7,12 @@
     </div>
     <div class="flex justify-center">
         <div class="w-4/5 max-lg:w-full p-4 flex gap-5 max-md:flex-col">
-            <div class="flex-1 relative">
+            <!-- <div class="flex-1 relative">
                 <svg :viewBox="'0 0 24 24'" class="w-8 h-8 text-green-700 absolute inset-2" fill="currentColor">
                     <path :d="mdiMagnify" />
                 </svg><input type="text" v-model="searchQuery" @input="changeSearch" placeholder="Buscar datos..."
                     class="input-elevated">
-            </div>
+            </div> -->
             <div class="flex-1 flex gap-5 max-sm:flex-col">
                 <select name="moduleSelect" v-model="selectedModulo" @change="changeFiltro"
                     class="px-3 py-2 max-w-full focus:ring focus:outline-none border-gray-700 rounded w-full dark:placeholder-gray-400 h-12 border bg-white dark:bg-slate-800">
