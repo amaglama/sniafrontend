@@ -11,7 +11,7 @@
                 <div class="grow flex flex-col">
                     <p class="text-justify m-4 grow mt-10">{{ descripcion }} </p>
                     <div class="w-full m-4 flex justify-between flex-col">
-                        <span class="fond-bold">Archivo: <span class="italic">{{ pdfName }}</span></span>
+                        <span class="fond-bold">Adjunto: <span class="italic">{{ pdfName }}</span></span>
                         <div class="text-green-900 fond-bold">
                             <span class="">Publicado el </span><span class="text-sm">{{ fecha }}</span>
                         </div>
@@ -19,7 +19,7 @@
                     <div class="flex justify-center pt-2">
                         <button @click="descargarPdf(urlPdf)"
                             class="bg-green-700 text-white font-bold rounded-md hover:bg-secondary px-8 py-2">
-                            Descargar</button>
+                            Ver contenido completo</button>
                     </div>
                 </div>
             </div>
