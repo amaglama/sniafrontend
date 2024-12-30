@@ -21,5 +21,5 @@ import TabAnuncio from "@/views/anuncios/components/TabAnuncio.vue";
 import { comunicados } from "@/services/tiposAnuncios";
 import { ref } from 'vue';
 
-const titulo = "COMISION GUBERNAMENTAL DEL OZONO-BOLIVIA";
+const titulo = "PROGRAMA NACIONAL DE GESTIÓN DE CALIDAD DEL AIRE";
 </script>
